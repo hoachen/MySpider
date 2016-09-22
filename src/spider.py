@@ -7,10 +7,11 @@ from models import TextModel
 from models import ImageModel
 
 BDJ = "budejie"
-QIUSHI = "qiushibaike"
+NEIHAN = "neihanduizi"
 
 CONTENT_WEBSITE = {
     BDJ: "http://www.budejie.com",
+    NEIHAN: "http://neihanshequ.com"
 }
 
 
@@ -83,3 +84,11 @@ class BuDeJie(Spider):
                 model = ImageModel(user, item[2], item[3], item[4], self.name)
                 models.append(model)
             return models    
+
+
+class NeiHan(Spider):
+    def __init__(self, headers):
+        Spider.__init__(self, headers)
+        self.name = NEIHAN
+        self.base_url = CONTENT_WEBSITE[self.name]
+
