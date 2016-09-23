@@ -97,10 +97,10 @@ class NeiHan(Spider):
         content = self.request_content(url)
         # print content
         if content:
-            pattern = re.compile('<img.*?user-img left".*?src="(.*?)">.*?'+ # user icon url
-                '<span.*?class="name">(.*?)</span>.*?'+   # user name 
-                '<span.*?f-ib f-fr">(.*?)</span>.*?'+  # release time
-                '<div.*?j-r-list-c-desc">(.*?)</div>',re.S) # text
+            pattern = re.compile('<img.*?"user-img lazy-load left".*?data-src="(.*?)".*?onerror.*?>.*?'+ # user icon url
+                '<div.*?class="name-time-wrapper left">.*?<span.*?class="name">(.*?)</span>.*?'+   # user name 
+                '<span.*?class="time timeago".*?>(.*?)</span>.*?'+  # release time
+                '<div.*?class="upload-txt  no-mb">.*?<p>(.*?)</p>',re.S) # text
             items = re.findall(pattern, content)
             models = []
             for item in items:
@@ -119,11 +119,11 @@ class NeiHan(Spider):
         content = self.request_content(url)
         # print content
         if content:
-            pattern = re.compile('<img.*?u-logo lazy".*?data-original="(.*?)".*?></a>.*?'+ # user icon url
-                '<a.*?u-user-name.*?target="_blank">(.*?)</a>.*?'+   # user name 
-                '<span.*?f-ib f-fr">(.*?)</span>.*?'+  # release time
-                '<div.*?j-r-list-c-desc">(.*?)</div>.*?'+ # text
-                '<img.*?class="lazy".*?data-original="(.*?)".*?>', re.S) #image url
+            pattern = re.compile('<img.*?"user-img lazy-load left".*?data-src="(.*?)".*?onerror.*?>.*?'+
+                '<div.*?class="name-time-wrapper left">.*?<span.*?class="name">(.*?)</span>.*?'+
+                '<span.*?class="time timeago".*?>(.*?)</span>.*?'+
+                '<div.*?class="upload-txt.*?<p>(.*?)</p>.*?'+
+                '<img.*?class="upload-img lazy".*?data-src="(.*?)".*?>',re.S) # 
             items = re.findall(pattern, content)
             models = []
             for item in items:
