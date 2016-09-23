@@ -3,12 +3,8 @@
 from spider import BuDeJie
 from sql import DataBase
 
-user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-        #初始化headers
-headers = { 'User-Agent' : user_agent }
-
 if __name__ == '__main__':
-    b = BuDeJie(headers)        
+    b = BuDeJie()        
     text_stories = b.parse_texts()
     db = DataBase()
     datas = []
